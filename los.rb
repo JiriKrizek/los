@@ -1,8 +1,13 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
 #
-
-require './jmena'
+if !(ARGV[2].nil?) && ARGV[2].eql?("2")
+  # column mapping
+  require "./jmena2"
+else
+  # rows mapping
+  require './jmena'
+end
 people = People::PEOPLE
 
 x=['A','B','C','D','E','F']
