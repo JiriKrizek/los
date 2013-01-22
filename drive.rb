@@ -20,20 +20,6 @@ auth_url = client.auth_code.authorize_url(
         "https://docs.googleusercontent.com/ " +
         "https://spreadsheets.google.com/feeds/")
 
-#puts auth_url
-#authorization_code = gets.chomp
-
-# Redirect the user to auth_url and get authorization code from redirect URL.
-#auth_token = client.auth_code.get_token(
-#     authorization_code, :redirect_uri => "urn:ietf:wg:oauth:2.0:oob")
-#session = GoogleDrive.login_with_oauth(auth_token.token)
-
-#puts "auth=========="
-#p auth_token
-#puts "session:=============="
-#p session
-
-
 auth_token = OAuth2::AccessToken.from_hash(client,
     {:refresh_token => Auth::REFR, :expires_at => Auth::EXP})
 auth_token = auth_token.refresh!
