@@ -8,6 +8,8 @@ require "json"
 # File containing OAuth API info
 require './auth'
 
+DOCS_DRIVE_ID='0AkVwi3dFkxT0dFRlaHlDeHZXQkFfRGsxemxXT1BXblE'
+
 client = OAuth2::Client.new(
     Auth::CLIENT_ID, Auth::CLIENT_SECRET,
     :site => "https://accounts.google.com",
@@ -37,9 +39,8 @@ end
 
 session = GoogleDrive.login_with_oauth(auth_token.token)
 
+ws = session.spreadsheet_by_key(DOCS_DRIVE_ID).worksheets[0]
 
-
-ws = session.spreadsheet_by_key("0AkVwi3dFkxT0dFRlaHlDeHZXQkFfRGsxemxXT1BXblE").worksheets[0]
 people = []
 for row in 2..24
   r = ws[row, 1]
